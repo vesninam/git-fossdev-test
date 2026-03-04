@@ -12,6 +12,7 @@ from math_demo import (
 # Тесты не должны дублировать (и делать предположения о) логику(е) тестируемого кода
 # Тесты не должны использовать ВСЕ наборы входных параметров
 # Тесты должны покрывать "кластеры" входных параметров
+# Тесты должны быть логически обособлены (single responsibility)
 # Тесты должны обнаруживать новые ошибки (pescicide paradox)
 # Тесты покрывают как успешные так и ошибочные кейсы
 
@@ -48,6 +49,11 @@ def test_addition_reasonable():
     assert add(7, 0) == 7
     print("Test ADDITION REASONBLE PASS")
 
+def test_addition_commutative():
+    # can be in previous test but logically separated
+    assert add(7, -6) == 1
+    assert add(-6, 7) == 1
+    print("Test ADDITION is COMMUNITATIVE PASSED")
 
 
 if __name__ == "__main__":
@@ -56,3 +62,4 @@ if __name__ == "__main__":
     test_addition_duplicated()
     #test_addition_overcomplicated() # too redundant run on your own risk
     test_addition_reasonable()
+    test_addition_commutative()
