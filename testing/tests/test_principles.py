@@ -28,9 +28,19 @@ def test_addition_with_bug():
 def test_addition_duplicated():
     # is it real good test (relies on absence of + in add())
     assert add(2, 3) == 2 + 3
-    
+
+def test_addition_overcomplicated():
+    # formally valid test but too slow
+    for i in range(0, 2**32):
+        for j in range(0, 2**32):
+            assert add(i, j) == sum([i, j]) # might violate duplicate principle
+            assert add(-i, j) == sum([-i, j])
+            assert add(i, -j) == sum([i, -j])
+            assert add(-i, -j) == sum([-i, -j])
+
 
 if __name__ == "__main__":
     test_addition()
     test_addition_with_bug()
     test_addition_duplicated()
+    #test_addition_overcomplicated() # too redundant run on your own risk
