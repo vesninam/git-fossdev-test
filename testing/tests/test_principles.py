@@ -9,7 +9,7 @@ from math_demo import (
 
 # Ранее тестирование позволяет съэкономить время позднее
 # Тесты показывают наличие ошибок, а не отсутвие 
-# Тесты не должны дублировать логику тестируемого кода
+# Тесты не должны дублировать (и делать предположения о) логику(е) тестируемого кода
 # Тесты не должны использовать ВСЕ наборы входных параметров
 # Тесты должны покрывать "кластеры" входных параметров
 # Тесты должны обнаруживать новые ошибки (pescicide paradox)
@@ -24,8 +24,13 @@ def test_addition_with_bug():
     assert add_with_bug(0, 0) == 0
     print("Test BUGGED ADDITION PASSED (does it mean code ok?)")
     #assert add_with_bug(6, 7) == 13 # will fail here
+
+def test_addition_duplicated():
+    # is it real good test (relies on absence of + in add())
+    assert add(2, 3) == 2 + 3
     
 
 if __name__ == "__main__":
     test_addition()
     test_addition_with_bug()
+    test_addition_duplicated()
