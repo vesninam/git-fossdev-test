@@ -4,7 +4,9 @@ sys.path.append("../src")
 
 from math_demo import (
     add,
-    add_with_bug
+    add_with_bug,
+    calculate_tax_with_bug,
+    calculate_tax
 )
 
 # Ранее тестирование позволяет съэкономить время позднее
@@ -55,6 +57,33 @@ def test_addition_commutative():
     assert add(-6, 7) == 1
     print("Test ADDITION is COMMUNITATIVE PASSED")
 
+def test_tax_calucation_pesticised():
+    # using only integers limits test case
+    assert calculate_tax_with_bug(1000) == 150.0
+    assert calculate_tax_with_bug(100) == 15.0
+    assert calculate_tax_with_bug(10) == 1.5
+    assert calculate_tax_with_bug(1) == 0.15
+    assert calculate_tax_with_bug(245) == 36.75
+    assert calculate_tax_with_bug(-200) == -30.
+    assert calculate_tax_with_bug(0) == 0.
+    print("Test TAX CALCULATION PASSED")
+    # must fails with floats but I didn't used them
+    #assert calculate_tax_with_bug(24.5) == 3.67 # 3.675
+
+def test_tax_calucation():
+    # using only integers limits test case
+    assert calculate_tax_with_bug(1000) == 150.0
+    assert calculate_tax_with_bug(100) == 15.0
+    assert calculate_tax_with_bug(10) == 1.5
+    assert calculate_tax_with_bug(1) == 0.15
+    assert calculate_tax_with_bug(245) == 36.75
+    assert calculate_tax_with_bug(-200) == -30.
+    assert calculate_tax_with_bug(0) == 0.
+    # using floats make additional test case not available with integers
+    assert calculate_tax_with_bug(24.5) == 3.67 # 3.675
+    print("Test TAX CALCULATION PASSED")
+
+
 
 if __name__ == "__main__":
     test_addition()
@@ -63,3 +92,5 @@ if __name__ == "__main__":
     #test_addition_overcomplicated() # too redundant run on your own risk
     test_addition_reasonable()
     test_addition_commutative()
+    test_tax_calucation_pesticised()
+    test_tax_calucation()
