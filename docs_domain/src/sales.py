@@ -7,9 +7,12 @@ def _parse_record(line: str):
         return None 
 
     product_name = sale[0] 
-    category = sale[1]  
-    unit_price = float(sale[2]) 
-    quantity = int(sale[3])
+    category = sale[1]
+    try:  
+        unit_price = float(sale[2]) 
+        quantity = int(sale[3])
+    except ValueError:
+        return None
 
     return {
         "product_name": product_name, 
