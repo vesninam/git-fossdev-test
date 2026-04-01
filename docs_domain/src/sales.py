@@ -19,17 +19,17 @@ def _parse_record(line: str) -> dict | None:
     try:  
         unit_price = float(sale[2]) 
         quantity = int(sale[3])
-        if quantity != sale[3]: # according specs quantity is always integer
+        if quantity != float(sale[3]): # according specs quantity is always integer
             return None
     
     except ValueError:
         return None
 
     return {
-        "product_name": product_name, 
-        "category": category, 
-        "unit_price": unit_price, 
-        "quantity": quantity
+        "n": product_name, 
+        "c": category, 
+        "a": unit_price, 
+        "q": quantity
     } 
 
 
