@@ -5,6 +5,7 @@ description = "Application for serving user's oreders"
 authors = ["Artem Vesnin <artemvesnin@gmail.com>"]
 license = "MIT"
 readme = "README.md"
+packages = [{ include = "app", from = "src" }]
 
 [tool.poetry.dependencies]
 python = "^3.12"
