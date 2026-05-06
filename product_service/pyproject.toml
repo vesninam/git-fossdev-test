@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "product-service"
+version = "0.0.1"
+description = "Service to serve other service by the products available in catalog"
+authors = ["Artem Vesnin <artemvesnin@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{ include = "app", from = "src" }]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = "^0.136.1"
+uvicorn = {extras = ["standard"], version = "^0.46.0"}
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^9.0.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
