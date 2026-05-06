@@ -16,3 +16,12 @@ test-pytest:
 	python3 -m pytest
 
 test: install-dep install test-pytest
+
+build-app:
+	docker build -t product_service:dev ./
+
+run:
+	docker run --rm --name product-service -p 8001:8000 product_service:dev
+
+
+

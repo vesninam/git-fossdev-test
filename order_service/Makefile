@@ -20,3 +20,10 @@ test: install-dep install test-pytest
 run:
 	poetry install
 	poetry run uvicorn app.main:app --host 127.0.0.1 --port 8002
+
+build-app:
+	docker build -t product_service:dev ./
+
+run-docker:
+	docker run --rm --name order-service -p 8002:8000 order_service:dev
+
